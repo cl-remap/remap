@@ -49,3 +49,6 @@
            #:shell
            #:sync
            #:to))
+
+(defpackage :remap-user
+  (:use :cl :remap))
