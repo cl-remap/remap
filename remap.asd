@@ -29,5 +29,4 @@
    (:file "remap" :depends-on ("path"))
    (:file "functions" :depends-on ("remap"))
    (:file "commands" :depends-on ("functions"))
-   (:file "shell" :depends-on ("commands"))
-   (:file "unistd" :depends-on ("remap"))))
+   (:file "shell" :depends-on ("commands"))))
