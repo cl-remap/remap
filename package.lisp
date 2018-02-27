@@ -27,15 +27,25 @@
            #:absolute!
            #:absolute-or-wild!
            #:absolute-p
+           #:cat
            #:cd
            #:cwd
+           #:dir
            #:from
            #:ftp
+           #:home
            #:http
            #:html
            #:ls
+           #:open
            #:pwd
            #:remap
+           #:remap-cat
+           #:remap-cd
+           #:remap-cwd
+           #:remap-dir
+           #:remap-home
+           #:remap-open
            #:shell
            #:sync
            #:to))
