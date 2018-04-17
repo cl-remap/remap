@@ -35,6 +35,9 @@ Position is set at end of STREAM if APPEND is non-NIL. CREATE indicates
 UNIX permissions to use for creating a new file. CREATE can also be NIL
 in which case no file will be created."))
 
+(defgeneric remap-unlink (remap path)
+  (:documentation "Removes a link to a file at PATH for REMAP."))
+
 (defmethod remap-dir ((remap remap) (path null) (sort symbol)
                       (order symbol))
   (remap-dir remap (remap-cwd remap) sort order))
