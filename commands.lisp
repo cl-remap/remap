@@ -34,3 +34,8 @@
   (write-string (cwd))
   (write-char #\Newline)
   (values))
+
+(defun rm (&rest paths)
+  (let ((remap *remap*))
+    (dolist (path paths)
+      (remap-unlink remap path))))
