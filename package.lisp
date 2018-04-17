@@ -21,8 +21,7 @@
         :split-sequence
         :unistd-stream)
   #.(cl-stream:shadowing-import-from)
-  (:export #:*hooks*
-           #:*remap*
+  (:export #:*remap*
            #:absolute
            #:absolute!
            #:absolute-or-wild!
@@ -31,13 +30,7 @@
            #:cd
            #:cwd
            #:dir
-           #:from
-           #:ftp
-           #:home
-           #:http
-           #:html
            #:ls
-           #:open
            #:pwd
            #:remap
            #:remap-cat
@@ -46,9 +39,9 @@
            #:remap-dir
            #:remap-home
            #:remap-open
-           #:shell
-           #:sync
-           #:to))
+           #:remap-unlink
+           #:rm
+           #:shell))
 
 (defpackage :remap-user
   (:use :cl :remap))
