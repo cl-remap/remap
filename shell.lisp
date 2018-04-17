@@ -18,8 +18,8 @@
   
 (defun shell-line (line)
   (let ((list (split-sequence #\Space line
-                         :remove-empty-subseqs t
-                         :test #'char=)))
+                              :remove-empty-subseqs t
+                              :test #'char=)))
     (when list
       (apply #'shell-command list))))
 
