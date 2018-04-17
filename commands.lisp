@@ -6,8 +6,12 @@
 (in-package :remap)
 
 (defun cat (&rest paths)
-  (let ((remap *remap*))
-    (apply #'remap-cat remap paths)))
+  (let ((remap *remap*)
+        (out (stdout)))
+    (dolist (path paths)
+      (with-stream (in (babel-input-stream
+                        (remap-open remap path :read t)))
+        (stream-copy in out)))))
 
 (defun cd (&optional directory)
   (let ((remap *remap*))
