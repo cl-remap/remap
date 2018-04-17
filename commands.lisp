@@ -19,7 +19,7 @@
                         (remap-home remap nil)))))
 
 (defun ls (&rest paths)
-  (dolist (path paths)
+  (dolist (path (or paths '("")))
     (let* ((abs (absolute-or-wild! path))
            (count 0)
            (dir (dir abs)))
