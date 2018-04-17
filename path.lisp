@@ -6,7 +6,9 @@
 (in-package :remap)
 
 (defun absolute-p (path)
-  (char= #\/ (char path 0)))
+  (declare (type string path))
+  (unless (zerop (length path))
+    (char= #\/ (char path 0))))
 
 (defun absolute (&optional path)
   (let* ((cwd (cwd))
