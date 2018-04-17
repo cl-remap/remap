@@ -29,4 +29,7 @@
        (unless line
          (return))
        (with-simple-restart (continue "continue")
-         (shell-line line)))))
+         (shell-line (subseq line 0 (1- (length line))))))))
+
+#+nil
+(untrace shell-line shell-command)
