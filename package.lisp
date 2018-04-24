@@ -31,6 +31,7 @@
            #:cwd
            #:dir
            #:ls
+           #:name
            #:pwd
            #:remap
            #:remap-cat

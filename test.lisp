@@ -2,7 +2,7 @@
 (in-package :common-lisp-user)
 
 (defpackage :remap.test
-  (:use :cl))
+  (:use :cl :remap))
 
 (in-package :remap.test)
 

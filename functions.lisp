@@ -8,5 +8,5 @@
 (defun cwd ()
   (remap-cwd *remap*))
 
-(defun dir (path &key (sort 'name) (order '<))
+(defun dir (&key (path (cwd)) (sort 'name) (order '<))
   (remap-dir *remap* path sort order))
