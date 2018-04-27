@@ -7,7 +7,7 @@
 
 (defun cat (&rest paths)
   (let ((remap *remap*)
-        (out (stdout)))
+        (out *stdout*))
     (dolist (path paths)
       (with-stream (in (babel-input-stream
                         (remap-open remap path :read t)))
