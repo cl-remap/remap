@@ -31,9 +31,10 @@
  home dir if USER is NIL."))
 
 (defgeneric remap-open (remap path &key read write append create)
-  (:documentation "Returns a cl-stream STREAM opened by REMAP at PATH.
-STREAM is an INPUT-STREAM if READ is non-NIL and an OUTPUT-STREAM if
-WRITE is non-NIL and an IO-STREAM if both READ and WRITE are non-NIL.
+  (:documentation "Returns a cl-stream STREAM of (unsigned-byte 8)
+element type, opened by REMAP at PATH.
+STREAM is an INPUT-STREAM if READ is non-NIL or an OUTPUT-STREAM if
+WRITE is non-NIL or an IO-STREAM if both READ and WRITE are non-NIL.
 Position is set at end of STREAM if APPEND is non-NIL. CREATE indicates
 UNIX permissions to use for creating a new file. CREATE can also be NIL
 in which case no file will be created."))
