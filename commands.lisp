@@ -25,13 +25,13 @@
              (dir (dir :path abs)))
         (dolist (name dir)
           (unless (char= #\. (char name 0))
-            (write-string name)
-            (write-char #\Newline)
+            (write-sequence name)
+            (write #\Newline)
             (incf count)))))
     count))
 
 (defun pwd ()
-  (write-string (cwd))
+  (write-sequence (cwd))
   (write-char #\Newline)
   (values))
 
