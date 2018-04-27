@@ -22,7 +22,8 @@
                "unistd-stdio"
                "local-time"
                "rollback"
-               "split-sequence")
+               "split-sequence"
+               "str")
   :components
   ((:file "package")
    (:file "path" :depends-on ("package"))

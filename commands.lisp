@@ -18,6 +18,13 @@
     (remap-cd remap (or directory
                         (remap-home remap nil)))))
 
+(defun cp (&rest paths)
+  (let ((remap *remap*)
+        (destination (first (last paths)))
+        (sources (butlast paths)))
+    (dolist (path sources)
+      (remap-cp remap path destination))))
+
 (defun ls (&rest paths)
   (let ((count 0))
     (dolist (path (or paths '("")))

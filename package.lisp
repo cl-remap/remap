@@ -19,6 +19,7 @@
         :remap.uri
         :rollback
         :split-sequence
+        :str
         :unistd-stream)
   #.(cl-stream:shadowing-import-from)
   (:export #:*remap*
@@ -28,6 +29,7 @@
            #:absolute-p
            #:cat
            #:cd
+           #:cp
            #:cwd
            #:dir
            #:ls
@@ -36,6 +38,7 @@
            #:remap
            #:remap-cat
            #:remap-cd
+           #:remap-cp
            #:remap-cwd
            #:remap-dir
            #:remap-home

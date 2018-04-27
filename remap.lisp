@@ -15,6 +15,9 @@
   (:documentation "Changes current working directory of REMAP to
  DIRECTORY."))
 
+(defgeneric remap-cp (remap source destination)
+  (:documentation "Copies SOURCE into DESTINATION for REMAP."))
+
 (defgeneric remap-cwd (remap)
   (:documentation "Return a string describing the current working dir
  of REMAP."))
@@ -37,6 +40,30 @@ in which case no file will be created."))
 
 (defgeneric remap-unlink (remap path)
   (:documentation "Removes a link to a file at PATH for REMAP."))
+
+(defun path-directory-p (path)
+  (declare (type string path))
+  (char= #\/ (char path (1- (length path)))))
+
+#+test (path-directory-p "/")
+#+test (path-directory-p "/hop")
+#+test (path-directory-p "hop/")
+
+(defun path-filename (path)
+  (declare (type string path))
+  (first (split-sequence #\/ path :from-end t :count 1)))
+
+#+test (path-filename "/hop/plop/file.txt")
+#+test (path-filename "file.txt")
+#+test (path-filename "/hop/plop/")
+
+(defmethod remap-cp ((remap remap) (source string) (destination string))
+  (let ((dest (if (path-directory-p destination)
+                  (str destination (path-filename source))
+                  destination)))
+    (with-stream (out (remap-open remap dest :write t))
+      (with-stream (in (remap-open remap source :read t))
+        (stream-copy in out)))))
 
 (defmethod remap-dir ((remap remap) (path null) (sort symbol)
                       (order symbol))
