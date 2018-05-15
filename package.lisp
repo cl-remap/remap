@@ -34,6 +34,7 @@
            #:dir
            #:ls
            #:name
+           #:open
            #:pwd
            #:remap
            #:remap-cat
