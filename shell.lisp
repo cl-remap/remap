@@ -6,7 +6,7 @@
 (in-package :remap)
 
 (defparameter *shell-commands*
-  '(cat cd cp ls mv pwd rm))
+  '(cat cd cp exit ls mv pwd rm))
 
 (defgeneric shell-command (name &rest args))
 
@@ -24,12 +24,15 @@
       (apply #'shell-command list))))
 
 (defun shell ()
-  (loop
-     (let ((line (read-line)))
-       (unless line
-         (return))
-       (with-simple-restart (continue "continue")
-         (shell-line (subseq line 0 (1- (length line))))))))
+  (let ((*exit-shell* nil))
+    (loop
+       (let ((line (read-line)))
+         (unless line
+           (return))
+         (with-simple-restart (continue "continue")
+           (shell-line (subseq line 0 (1- (length line))))))
+       (when *exit-shell*
+         (return)))))
 
 #+nil
 (untrace shell-line shell-command)

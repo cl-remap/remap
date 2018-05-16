@@ -25,6 +25,12 @@
     (dolist (path sources)
       (remap-cp remap path destination))))
 
+(defvar *exit-shell*)
+
+(defun exit ()
+  (when (boundp '*exit-shell*)
+    (setf *exit-shell* t)))
+
 (defun ls (&rest paths)
   (if (endp paths)
       (ls (cwd))
