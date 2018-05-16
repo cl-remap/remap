@@ -30,6 +30,9 @@
   (:documentation "Return USER home directory for REMAP or current user
  home dir if USER is NIL."))
 
+(defgeneric remap-mv (remap source destination)
+  (:documentation "Moves SOURCE into DESTINATION for REMAP."))
+
 (defgeneric remap-open (remap path &key read write append create)
   (:documentation "Returns a cl-stream STREAM of (unsigned-byte 8)
 element type, opened by REMAP at PATH.
@@ -79,6 +82,10 @@ in which case no file will be created."))
                       (sort (eql 'name))
                       (order (eql '>)))
   (sort (remap-dir remap path nil nil) #'string>))
+
+(defmethod remap-mv ((remap remap) (source string) (destination string))
+  (remap-cp remap source destination)
+  (remap-unlink remap source))
 
 (defvar *remap*)
 

@@ -35,6 +35,8 @@
            #:ls
            #:name
            #:open
+           #:path-directory-p
+           #:path-filename
            #:pwd
            #:remap
            #:remap-cat

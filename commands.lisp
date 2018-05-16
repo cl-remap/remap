@@ -43,6 +43,13 @@
             (incf count)))))
     count))
 
+(defun mv (&rest paths)
+  (let ((remap *remap*)
+        (destination (first (last paths)))
+        (sources (butlast paths)))
+    (dolist (path sources)
+      (remap-mv remap path destination))))
+
 (defun pwd ()
   (write-sequence (cwd))
   (write-char #\Newline)
