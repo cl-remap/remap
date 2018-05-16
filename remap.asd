@@ -16,12 +16,7 @@
   :version "0.2"
   :description "modular transactional file system"
   :depends-on ("babel-stream"
-               "cffi-dirent"
-               "cffi-unistd"
                "cl-stream"
-               "unistd-stdio"
-               "local-time"
-               "rollback"
                "split-sequence"
                "str")
   :components
