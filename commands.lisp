@@ -25,6 +25,12 @@
     (dolist (path sources)
       (remap-cp remap path destination))))
 
+(defun cut (path start &optional end)
+  (setf start (parse-integer start))
+  (when end
+    (setf end (parse-integer end)))
+  (remap-cut *remap* path start end))
+
 (defvar *exit-shell*)
 
 (defun exit ()

@@ -30,6 +30,7 @@
            #:cat
            #:cd
            #:cp
+           #:cut
            #:cwd
            #:dir
            #:ls
@@ -42,6 +43,7 @@
            #:remap-cat
            #:remap-cd
            #:remap-cp
+           #:remap-cut
            #:remap-cwd
            #:remap-dir
            #:remap-home

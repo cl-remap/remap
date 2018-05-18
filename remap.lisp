@@ -22,6 +22,10 @@
   (:documentation "Return a string describing the current working dir
  of REMAP."))
 
+(defgeneric remap-cut (remap path start end)
+  (:documentation "Cut file at PATH from START to END for REMAP.
+START and END can be NIL to denote respectively start and end of file."))
+
 (defgeneric remap-dir (remap path sort order)
   (:documentation "Return a directory listing of REMAP at PATH, sorted
  according to SORT and ORDER."))
@@ -68,6 +72,14 @@ in which case no file will be created."))
     (with-stream (out (remap-open remap dest :write t))
       (with-stream (in (remap-open remap source :read t))
         (stream-copy in out)))))
+
+(defmethod remap-cut ((remap remap) (path string)
+                      (start null) (end null))
+  (remap-cat remap path))
+
+(defmethod remap-cut ((remap remap) (path string)
+                      (start null) end)
+  (remap-cut remap path 0 end))
 
 (defmethod remap-dir ((remap remap) (path null) (sort symbol)
                       (order symbol))

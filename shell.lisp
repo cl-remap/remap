@@ -6,7 +6,7 @@
 (in-package :remap)
 
 (defparameter *shell-commands*
-  '(cat cd cp exit ls mv pwd rm))
+  '(cat cd cp cut exit ls mv pwd rm))
 
 (defgeneric shell-command (name &rest args))
 
