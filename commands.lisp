@@ -26,6 +26,8 @@
       (remap-cp remap path destination))))
 
 (defun cut (path start &optional end)
+  (when (string= "-" path)
+    (setf path nil))
   (setf start (parse-integer start))
   (when end
     (setf end (parse-integer end)))
