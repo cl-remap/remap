@@ -15,9 +15,7 @@
   (:use :babel-stream
         :cl
         :cl-stream
-        :local-time
         :remap.uri
-        :rollback
         :split-sequence
         :str
         :unistd-stream)
