@@ -8,9 +8,6 @@
 (defclass remap ()
   ())
 
-(defgeneric remap-cat (remap &rest paths)
-  (:documentation "Prints concatenated files at PATHS for REMAP."))
-
 (defgeneric remap-cd (remap directory)
   (:documentation "Changes current working directory of REMAP to
  DIRECTORY."))
@@ -49,35 +46,19 @@ in which case no file will be created."))
 (defgeneric remap-unlink (remap path)
   (:documentation "Removes a link to a file at PATH for REMAP."))
 
-(defun path-directory-p (path)
-  (declare (type string path))
-  (char= #\/ (char path (1- (length path)))))
-
-#+test (path-directory-p "/")
-#+test (path-directory-p "/hop")
-#+test (path-directory-p "hop/")
-
-(defun path-filename (path)
-  (declare (type string path))
-  (first (split-sequence #\/ path :from-end t :count 1)))
-
-#+test (path-filename "/hop/plop/file.txt")
-#+test (path-filename "file.txt")
-#+test (path-filename "/hop/plop/")
-
-(defmethod remap-cp ((remap remap) (source string) (destination string))
+(defmethod remap-cp ((remap remap) (source symbol) (destination symbol))
   (let ((dest (if (path-directory-p destination)
-                  (str destination (path-filename source))
+                  (uri destination (path-filename source))
                   destination)))
     (with-stream (out (remap-open remap dest :write t))
       (with-stream (in (remap-open remap source :read t))
         (stream-copy in out)))))
 
-(defmethod remap-cut ((remap remap) (path string)
+(defmethod remap-cut ((remap remap) path
                       (start null) (end null))
   (remap-cat remap path))
 
-(defmethod remap-cut ((remap remap) (path string)
+(defmethod remap-cut ((remap remap) (path symbol)
                       (start null) end)
   (remap-cut remap path 0 end))
 
