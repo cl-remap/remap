@@ -20,10 +20,9 @@
                "split-sequence"
                "str")
   :components
-  ((:file "commands" :depends-on ("functions"))
-   (:file "functions" :depends-on ("remap"))
-   (:file "package")
-   (:file "path" :depends-on ("uri"))
+  ((:file "package")
+   (:file "path" :depends-on ("package"))
    (:file "remap" :depends-on ("path"))
-   (:file "shell" :depends-on ("commands"))
-   (:file "uri" :depends-on ("package"))))
+   (:file "functions" :depends-on ("remap"))
+   (:file "commands" :depends-on ("functions"))
+   (:file "shell" :depends-on ("commands"))))

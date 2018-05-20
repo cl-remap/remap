@@ -5,13 +5,19 @@
 
 (in-package :common-lisp-user)
 
+;;  All reusable URIs and paths should go here
+
+(defpackage :remap.uri)
+
 ;;  Here we control data remapping
 
 (defpackage :remap
   (:use :babel-stream
         :cl
         :cl-stream
+        :local-time
         :remap.uri
+        :rollback
         :split-sequence
         :str
         :unistd-stream)
@@ -32,10 +38,7 @@
            #:open
            #:path-directory-p
            #:path-filename
-           #:pipe
            #:pwd
-           #:redirect-from
-           #:redirect-to
            #:remap
            #:remap-cat
            #:remap-cd
