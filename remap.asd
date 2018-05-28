@@ -18,7 +18,8 @@
   :depends-on ("babel-stream"
                "cl-stream"
                "split-sequence"
-               "str")
+               "str"
+               "utf8-stdio")
   :components
   ((:file "package")
    (:file "path" :depends-on ("package"))
