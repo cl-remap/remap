@@ -33,4 +33,20 @@
     (or (when (or (wild-pathname-p abs)
                   (probe-file abs))
           abs)
-        (error "No such file or directory: ~S" path))))
+        (error "No such file or directory: ~S" abs))))
+
+(defun path-directory-p (path)
+  (declare (type string path))
+  (char= #\/ (char path (1- (length path)))))
+
+#+test (path-directory-p "/")
+#+test (path-directory-p "/hop")
+#+test (path-directory-p "hop/")
+
+(defun path-filename (path)
+  (declare (type string path))
+  (first (split-sequence #\/ path :from-end t :count 1)))
+
+#+test (path-filename "/hop/plop/file.txt")
+#+test (path-filename "file.txt")
+#+test (path-filename "/hop/plop/")
