@@ -34,6 +34,7 @@
            #:ls
            #:name
            #:open
+           #:path-as-directory
            #:path-directory-p
            #:path-filename
            #:pwd

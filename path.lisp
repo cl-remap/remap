@@ -39,6 +39,11 @@
 #+test (path-directory-p "/hop")
 #+test (path-directory-p "hop/")
 
+(defun path-as-directory (path)
+  (if (path-directory-p path)
+      path
+      (str path "/")))
+
 (defun path-filename (path)
   (declare (type string path))
   (first (split-sequence #\/ path :from-end t :count 1)))
