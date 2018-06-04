@@ -19,6 +19,7 @@
                "cl-stream"
                "split-sequence"
                "str"
+               "unistd-stream"
                "utf8-stdio")
   :components
   ((:file "package")
