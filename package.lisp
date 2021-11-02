@@ -1,6 +1,6 @@
 ;;
 ;;  remap  -  modular transactional file system in Common Lisp
-;;  Thomas de Grivel <thoxdg@gmail.com> +33614550127
+;;  Copyright 2018 Thomas de Grivel <thoxdg@gmail.com>
 ;;
 
 (in-package :common-lisp-user)

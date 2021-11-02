@@ -1,3 +1,7 @@
+;;
+;;  remap  -  modular transactional file system in Common Lisp
+;;  Copyright 2018 Thomas de Grivel <thoxdg@gmail.com>
+;;
 
 (in-package :common-lisp-user)
 
