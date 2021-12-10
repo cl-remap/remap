@@ -20,7 +20,7 @@
                "split-sequence"
                "str"
                "unistd-stream"
-               "utf8-stdio")
+               "babel-unistd-stdio")
   :components
   ((:file "package")
    (:file "path" :depends-on ("package"))

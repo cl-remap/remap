@@ -26,13 +26,14 @@
 (defun shell ()
   (let ((*exit-shell* nil))
     (loop
-       (let ((line (read-line)))
-         (unless line
-           (return))
-         (with-simple-restart (continue "continue")
-           (shell-line (subseq line 0 (1- (length line))))))
-       (when *exit-shell*
-         (return)))))
+      (let ((line (make-array 1024 :element-type 'character :fill-pointer 0)))
+        (read-line line)
+        (unless line
+          (return))
+        (with-simple-restart (continue "continue")
+          (shell-line (subseq line 0 (1- (length line))))))
+      (when *exit-shell*
+        (return)))))
 
 #+nil
 (untrace shell-line shell-command)
